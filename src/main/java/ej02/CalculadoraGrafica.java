@@ -45,6 +45,7 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
         btn_seno = new javax.swing.JButton();
         btn_coseno = new javax.swing.JButton();
         btn_tangente = new javax.swing.JButton();
+        btn_potencia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -184,10 +185,32 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
         });
 
         btn_seno.setText("Sin");
+        btn_seno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_senoActionPerformed(evt);
+            }
+        });
 
         btn_coseno.setText("Cos");
+        btn_coseno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cosenoActionPerformed(evt);
+            }
+        });
 
         btn_tangente.setText("Tan");
+        btn_tangente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tangenteActionPerformed(evt);
+            }
+        });
+
+        btn_potencia.setText("^");
+        btn_potencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_potenciaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -232,17 +255,18 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
                                                 .addComponent(btn_5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                             .addGap(2, 2, 2)))
                                     .addComponent(btn_punto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(btn_tangente, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(btn_igual, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btn_tangente, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_potencia, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_suma, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_resta, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_multiplicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 16, Short.MAX_VALUE))
+                            .addComponent(btn_multiplicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_igual, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,8 +305,9 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
                     .addComponent(btn_igual, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_coseno)
-                        .addComponent(btn_tangente)))
-                .addContainerGap(157, Short.MAX_VALUE))
+                        .addComponent(btn_tangente)
+                        .addComponent(btn_potencia, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -348,11 +373,17 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
          case "/":
              if(numero2==0){txtPantalla.setText(error());}
              else{
-             txtPantalla.setText(Float.toString(division(numero1,numero2)));};break;
-        case "#":if(numero1 < 0 && numero2 % 2 == 0){txtPantalla.setText(error());}
-        else{
-            txtPantalla.setText(Double.toString(raiz(numero1,numero2)));}break;}
-        
+             txtPantalla.setText(Float.toString(division(numero1,numero2)));}
+             ;break;
+          case "#":if(numero1 < 0 && numero2 % 2 == 0){txtPantalla.setText(error());}
+         else{
+            txtPantalla.setText(Double.toString(raiz(numero1,numero2)));}
+          ;break;
+          case "sin": double resultado = Math.sin(Math.toRadians(numero1)); txtPantalla.setText(Double.toString(resultado));break;
+        case "cos": double resultadoc = Math.cos(Math.toRadians(numero1)); txtPantalla.setText(Double.toString(resultadoc));break;
+        case "tan": double resultadot = Math.tan(Math.toRadians(numero1)); txtPantalla.setText(Double.toString(resultadot));}
+          
+                  
     }//GEN-LAST:event_btn_igualActionPerformed
 
     private void btn_puntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_puntoActionPerformed
@@ -387,6 +418,32 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
        simbolo="#";
        txtPantalla.setText(" ");
     }//GEN-LAST:event_btn_raizActionPerformed
+
+    private void btn_potenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_potenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_potenciaActionPerformed
+
+    private void btn_senoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_senoActionPerformed
+       numero1 = Float.parseFloat(txtPantalla.getText());
+    
+     double resultado = Math.sin(Math.toRadians(numero1)); 
+        txtPantalla.setText(Double.toString(resultado));
+     
+    }//GEN-LAST:event_btn_senoActionPerformed
+
+    private void btn_cosenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cosenoActionPerformed
+      numero1 = Float.parseFloat(txtPantalla.getText());
+    
+     double resultadoc = Math.cos(Math.toRadians(numero1)); 
+        txtPantalla.setText(Double.toString(resultadoc));
+    }//GEN-LAST:event_btn_cosenoActionPerformed
+
+    private void btn_tangenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tangenteActionPerformed
+        numero1 = Float.parseFloat(txtPantalla.getText());
+    
+     double resultadot = Math.tan(Math.toRadians(numero1)); 
+        txtPantalla.setText(Double.toString(resultadot));
+    }//GEN-LAST:event_btn_tangenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -445,6 +502,7 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
     public static String error( ){
       return "Error";
     }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_0;
@@ -461,6 +519,7 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
     private javax.swing.JButton btn_coseno;
     private javax.swing.JButton btn_igual;
     private javax.swing.JButton btn_multiplicacion;
+    private javax.swing.JButton btn_potencia;
     private javax.swing.JButton btn_punto;
     private javax.swing.JButton btn_raiz;
     private javax.swing.JButton btn_resta;
