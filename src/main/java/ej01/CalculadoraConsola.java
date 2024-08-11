@@ -1,13 +1,45 @@
 package ej01;
 import java.util.Scanner;
 public class CalculadoraConsola {
+     public static double suma(double a, double b){
+        return a+b;
+    }
+    public static double resta(double a, double b){
+        return a-b;
+    }
+    public static double multi(double a, double b){
+        return a*b;
+    }
+    public static double divi(double a, double b){
+        return a/b;
+    }
+    public static double potencia(double a, double b){
+        return Math.pow(a, b);
+    }
+    public static double raiz(double a, double b){
+        return Math.pow(a, 1.0 / b);
+    }
     public static void main (String args[]) {
         System.out.println("Calculadora consola");
         Scanner leer= new Scanner(System.in);
         double conteo=0;
         boolean reset= true;
-        
-        
+        boolean salir=true;
+       while(salir){
+        double num1;
+       double num2;
+       
+          if(reset){
+           System.out.print("Ingresa el primer número: ");
+            num1= leer.nextDouble();
+          System.out.print("Ingresa el segundo número: ");
+            num2= leer.nextDouble();
+            }
+          else{
+           num1=conteo;
+           System.out.println("Ingresa el siguiente número: ");
+           num2 = leer.nextDouble();};
+            
             System.out.print("1.Sumar");
             System.out.print("2.Restar");
             System.out.print("3.Multiplicar");
@@ -18,18 +50,12 @@ public class CalculadoraConsola {
             System.out.print("8.IVA");
             
             
-            if(reset=false){
+          
             int option=leer.nextInt();
-            double num1;
-            double num2;
+            
             switch(option){
                 case 1:{
-                    
-                 System.out.print("Ingrese su primer numero a sumar");
-                 num1= leer.nextDouble();
-                 System.out.print("Ingrese su segundo numero "); 
-                 num2= leer.nextDouble();
-                 conteo= suma(num1,num2);
+                 conteo = suma(num1,num2);
                 };break;
                 case 2:{
                     if(conteo==0){
@@ -61,22 +87,5 @@ public class CalculadoraConsola {
             
         }
     }
-    public static double suma(double a, double b){
-        return a+b;
-    }
-    public static double resta(double a, double b){
-        return a-b;
-    }
-    public static double multi(double a, double b){
-        return a*b;
-    }
-    public static double divi(double a, double b){
-        return a/b;
-    }
-    public static double potencia(double a, double b){
-        return Math.pow(a, b);
-    }
-    public static double raiz(double a, double b){
-        return Math.pow(a, 1.0 / b);
-    }
+    
 }
