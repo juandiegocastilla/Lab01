@@ -393,7 +393,7 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
          else{
             txtPantalla.setText(Double.toString(raiz(numero1,numero2)));}
           ;break;
-          case "sin": double resultado = Math.sin(Math.toRadians(numero1)); txtPantalla.setText(Double.toString(resultado));break;
+          
         case "cos": double resultadoc = Math.cos(Math.toRadians(numero1)); txtPantalla.setText(Double.toString(resultadoc));break;
         case "tan": double resultadot = Math.tan(Math.toRadians(numero1)); txtPantalla.setText(Double.toString(resultadot));
                 ;break;
@@ -444,10 +444,10 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
 
     private void btn_senoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_senoActionPerformed
       
-    
+     numero1 = Float.parseFloat(txtPantalla.getText());
      double resultado = Math.sin(Math.toRadians(numero1)); 
         txtPantalla.setText(Double.toString(resultado));
-        numero1 = Float.parseFloat(txtPantalla.getText());
+       
      
     }//GEN-LAST:event_btn_senoActionPerformed
 
