@@ -1,33 +1,8 @@
 package ej01;
+
 import java.util.Scanner;
+import funcionesPuras.Operacion;
 public class CalculadoraConsola {
-     public static double suma(double a, double b){
-        return a+b;
-    }
-    public static double resta(double a, double b){
-        return a-b;
-    }
-    public static double multi(double a, double b){
-        return a*b;
-    }
-    public static double divi(double a, double b){
-        return a/b;
-    }
-    public static double potencia(double a, double b){
-        return Math.pow(a, b);
-    }
-    public static double raiz(double a, double b){
-        return Math.pow(a, 1.0 / b);
-    }
-     public static double seno(double a){
-        return Math.sin(Math.toRadians(a));
-    }
-     public static double coseno(double a){
-        return Math.cos(Math.toRadians(a));
-    }
-     public static double tan(double a){
-        return Math.tan(Math.toRadians(a));
-    }
     
     public static void main (String args[]) {
         System.out.println("Calculadora consola");
@@ -75,41 +50,41 @@ public class CalculadoraConsola {
             switch(option){
                 case 1:{
                     
-                 conteo = suma(num1,num2);
+                 conteo = Operacion.suma(num1,num2);
                  System.out.println("Esto da="+conteo);
                  reset=false;
                 };break;
                 case 2:{ 
-                 conteo= resta(num1,num2);
+                 conteo= Operacion.resta(num1,num2);
                     System.out.println("Esto da="+conteo);
                     reset=false;
                  };break;
                 case 3:{
-                    conteo= multi(num1,num2);
+                    conteo= Operacion.multi(num1,num2);
                     System.out.println("Esto da="+conteo);
                     reset=false;
                 };break;
                 case 4:{if(num2!=0){
-                    conteo=divi(num1,num2);
+                    conteo=Operacion.divi(num1,num2);
                     System.out.println("Esto da="+conteo);
                     reset=false;}else{System.out.println("ERROR");}
                 };break;
                 case 5:{
-                    conteo = seno(num1); 
+                    conteo = Operacion.seno(num1); 
                     System.out.println("Esto da=" + conteo);
                     reset = false;
                   
                     
                 };break;
                 case 6:{
-                    conteo = coseno(num1); 
+                    conteo = Operacion.coseno(num1); 
                     System.out.println("Esto da=" + conteo);
                     reset = false;
                    
                 };break;
                 case 7:{
                     if (num1 != 90 && num1 != 270) { 
-                        conteo = tan(num1);
+                        conteo = Operacion.tan(num1);
                         System.out.println("Esto da=" + conteo);
                         reset = false;
                     } else {
@@ -121,14 +96,14 @@ public class CalculadoraConsola {
                 reset=false;
                 };break;
                 case 9:{
-                    conteo=potencia(num1,num2);
+                    conteo=Operacion.potencia(num1,num2);
                     System.out.println("Esto da="+conteo);
                     reset=false;
                 };break;
                 case 10:{
                     
                     if (num1 > 0 || num2 % 2 != 0) {
-                        conteo = raiz(num1, num2);
+                        conteo = Operacion.raiz(num1, num2);
                         System.out.println("Esto da=" + conteo);
                         reset = false;
                     } else {
