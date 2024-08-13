@@ -9,7 +9,5 @@ public class Operacion {
         return a + b;
     }
 
-    public static boolean isInteger(String str) {
-        return str.matches("^[+-]\\d+");
-    }
+    
 }

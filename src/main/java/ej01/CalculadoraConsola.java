@@ -35,9 +35,10 @@ public class CalculadoraConsola {
         double conteo=0;
         boolean reset= true;
         boolean salir=true;
+        
        while(salir){
         double num1;
-        double num2;
+        double num2=0;
        
           System.out.println(" ");
             System.out.println("1.Sumar");
@@ -54,19 +55,22 @@ public class CalculadoraConsola {
             System.out.println("Digita tu opcion");
             int option=leer.nextInt();
             
-            if(reset){
-           System.out.print("Ingresa el primer numero: ");
-            num1= leer.nextDouble();
-          System.out.print("Ingresa el segundo numero: ");
-            num2= leer.nextDouble();
+            if (reset) {
+                System.out.print("Ingresa el primer numero o base (si es potencia o raiz): ");
+                num1 = leer.nextDouble();
+                if (option >= 1 && option <= 4 || option == 9 || option == 10 || option == 8) {
+                    System.out.print("Ingresa el segundo numero o indice (o exponente en caso de potencia o raiz): ");
+                    num2 = leer.nextDouble();
+                }
+            } else {
+                num1 = conteo;
+                if (option >= 1 && option <= 4 || option == 9 || option == 8) {
+                    System.out.print("Ingresa el siguiente numero para hacer la operacion: ");
+                    num2 = leer.nextDouble();
+                }
             }
-          else{
-           num1=conteo;
-           System.out.println("Ingresa el siguiente numero para hacerla (con las razones trigonometricas ponga 0): ");
-           num2 = leer.nextDouble();}
             
-            if(option==5){
-            num1=conteo;}
+            
             
             switch(option){
                 case 1:{
@@ -85,25 +89,32 @@ public class CalculadoraConsola {
                     System.out.println("Esto da="+conteo);
                     reset=false;
                 };break;
-                case 4:{
+                case 4:{if(num2!=0){
                     conteo=divi(num1,num2);
                     System.out.println("Esto da="+conteo);
-                    reset=false;
+                    reset=false;}else{System.out.println("ERROR");}
                 };break;
                 case 5:{
-                    conteo=seno(conteo);
-                    System.out.println("Esto da="+conteo);
+                    conteo = seno(num1); 
+                    System.out.println("Esto da=" + conteo);
+                    reset = false;
+                  
                     
                 };break;
                 case 6:{
-                    conteo=coseno(conteo);
-                    System.out.println("Esto da="+conteo);
-                    reset=false;
+                    conteo = coseno(num1); 
+                    System.out.println("Esto da=" + conteo);
+                    reset = false;
+                   
                 };break;
                 case 7:{
-                    conteo=tan(conteo);
-                    System.out.println("Esto da="+conteo);
-                    reset=false;
+                    if (num1 != 90 && num1 != 270) { 
+                        conteo = tan(num1);
+                        System.out.println("Esto da=" + conteo);
+                        reset = false;
+                    } else {
+                        System.out.println("ERROR: Tangente indefinida en 90° o 270°.");
+                     }
                 };break;
                 case 8:{conteo=num1*(num2/100);
                 System.out.println("Esto da="+conteo);
@@ -115,10 +126,14 @@ public class CalculadoraConsola {
                     reset=false;
                 };break;
                 case 10:{
-                    conteo=raiz(num1,num2);
-                    System.out.println("Esto da="+conteo);
-                    reset=false;
-                };break;
+                    
+                    if (num1 > 0 || num2 % 2 != 0) {
+                        conteo = raiz(num1, num2);
+                        System.out.println("Esto da=" + conteo);
+                        reset = false;
+                    } else {
+                        System.out.println("ERROR: Raíz no valida.");
+                }};break;
                 case 11:{
                 salir=false;}
              }

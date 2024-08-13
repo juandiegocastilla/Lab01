@@ -443,10 +443,11 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_potenciaActionPerformed
 
     private void btn_senoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_senoActionPerformed
-       numero1 = Float.parseFloat(txtPantalla.getText());
+      
     
      double resultado = Math.sin(Math.toRadians(numero1)); 
         txtPantalla.setText(Double.toString(resultado));
+        numero1 = Float.parseFloat(txtPantalla.getText());
      
     }//GEN-LAST:event_btn_senoActionPerformed
 
